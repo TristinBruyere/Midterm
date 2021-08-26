@@ -172,6 +172,10 @@ namespace Mockbuster_Test
             string newGenre = "Thriller";
             string newDirector = "Michael Bay";
             Admin.EditMovie(m1, newName, newMainActor, newGenre, newDirector);
+            Assert.Equal("6 Underground", movieList[0].GetMovieName());
+            Assert.Equal("Ryan Reynolds", movieList[0].GetMainActor());
+            Assert.Equal("Thriller", movieList[0].GetGenre());
+            Assert.Equal("Michael Bay", movieList[0].GetDirector());
         }
     }
 }

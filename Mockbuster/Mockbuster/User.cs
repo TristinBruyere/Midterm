@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 
 namespace Mockbuster
 {
@@ -65,12 +66,13 @@ namespace Mockbuster
                     filteredList = User.FilterMovieName(movieList, searchName);
                     if (filteredList.Count == 0)
                     {
-                        Console.WriteLine("No movies with that name were found.");
+                        Console.WriteLine("\nNo movies with that name were found.");
                         return filteredList;
                     }
                     else
                     {
-                        Console.WriteLine("That movie was found!");
+                        Console.WriteLine("\nThat movie was found! Here are the details:");
+                        Thread.Sleep(300);
                         return filteredList;
                     }
                 case "2":
@@ -79,12 +81,13 @@ namespace Mockbuster
                     filteredList = User.FilterMainActors(movieList, searchMainActor);
                     if (filteredList.Count == 0)
                     {
-                        Console.WriteLine("No movies with that main actor were found.");
+                        Console.WriteLine("\nNo movies with that main actor were found.");
                         return filteredList;
                     }
                     else
                     {
-                        Console.WriteLine("Movie(s) with that main actor found!");
+                        Console.WriteLine("\nMovie(s) with that main actor found! Here are the details:");
+                        Thread.Sleep(300);
                         return filteredList;
                     }
                 case "3":
@@ -93,12 +96,13 @@ namespace Mockbuster
                     filteredList = User.FilterGenre(movieList, searchGenre);
                     if (filteredList.Count == 0)
                     {
-                        Console.WriteLine("No movies with that main actor were found.");
+                        Console.WriteLine("\nNo movies with of that genre were found.");
                         return filteredList;
                     }
                     else
                     {
-                        Console.WriteLine("Movie(s) of that genre found!");
+                        Console.WriteLine("\nMovie(s) of that genre found! Here are the details:");
+                        Thread.Sleep(300);
                         return filteredList;
                     }
                 case "4":
@@ -107,12 +111,13 @@ namespace Mockbuster
                     filteredList = User.FilterDirector(movieList, searchDirector);
                     if (filteredList.Count == 0)
                     {
-                        Console.WriteLine("No movies with that director were found.");
+                        Console.WriteLine("\nNo movies with that director were found.");
                         return filteredList;
                     }
                     else
                     {
-                        Console.WriteLine("Movie(s) with that director found!");
+                        Console.WriteLine("\nMovie(s) with that director found! Here are the details:");
+                        Thread.Sleep(300);
                         return filteredList;
                     }
                 default:
