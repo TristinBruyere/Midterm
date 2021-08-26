@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Mockbuster
 {
-    class MoviesRepo
+    public class MoviesRepo
     {
         public static List<Movie> GetMovieList()
         {

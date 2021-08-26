@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Mockbuster
 {
-    class Movie
+    public class Movie
     {
         private string movieName;
         private string mainActor;
@@ -12,6 +12,13 @@ namespace Mockbuster
         private string director;
 
         public Movie(string _movieName, string _mainActor, string _genre, string _director)
+        {
+            movieName = _movieName;
+            mainActor = _mainActor;
+            genre = _genre;
+            director = _director;
+        }
+        public void Update(string _movieName, string _mainActor, string _genre, string _director)
         {
             movieName = _movieName;
             mainActor = _mainActor;
