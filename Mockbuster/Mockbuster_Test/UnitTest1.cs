@@ -7,7 +7,6 @@ namespace Mockbuster_Test
 {
     public class MovieRepoTest
     {
-        // todo Get this list test working
         [Fact]
         public void MoviesRepo_Test()
         {
@@ -20,7 +19,7 @@ namespace Mockbuster_Test
     public class UserClassTests
     {
         [Fact]
-        public void FilterMovieNameContains_Test()
+        public void FilterMovieName_Test()
         {
             List<Movie> Movies = new List<Movie>();
             Movie m1 = new Movie("Face/Off", "Nicolas Cage", "Action", "John Woo");
@@ -30,36 +29,13 @@ namespace Mockbuster_Test
             Movie m3 = new Movie("Seven Samurai", "Toshiro Mifune", "Drama", "Akira Kurosawana");
             Movies.Add(m3);
             List<Movie> actual = User.FilterMovieName(Movies, "6 Underground");
-            Assert.Contains(m2, actual);
-        }
-        [Fact]
-        public void FilterMovieNameDoesNotContain_Test()
-        {
-            List<Movie> Movies = new List<Movie>();
-            Movie m1 = new Movie("Face/Off", "Nicolas Cage", "Action", "John Woo");
-            Movies.Add(m1);
-            Movie m2 = new Movie("6 Underground", "Ryan Reynolds", "Thriller", "Michael Bay");
-            Movies.Add(m2);
-            Movie m3 = new Movie("Seven Samurai", "Toshiro Mifune", "Drama", "Akira Kurosawana");
-            Movies.Add(m3);
-            List<Movie> actual = User.FilterMovieName(Movies, "6 Underground");
+            Assert.Contains(m2, actual); // Shows the new actual list contains indicated Movie
             Assert.DoesNotContain(m1, actual);
-        }
-        [Fact]
-        public void FilterMovieNameDoesNotContain_Test2()
-        {
-            List<Movie> Movies = new List<Movie>();
-            Movie m1 = new Movie("Face/Off", "Nicolas Cage", "Action", "John Woo");
-            Movies.Add(m1);
-            Movie m2 = new Movie("6 Underground", "Ryan Reynolds", "Thriller", "Michael Bay");
-            Movies.Add(m2);
-            Movie m3 = new Movie("Seven Samurai", "Toshiro Mifune", "Drama", "Akira Kurosawana");
-            Movies.Add(m3);
-            List<Movie> actual = User.FilterMovieName(Movies, "6 Underground");
             Assert.DoesNotContain(m3, actual);
         }
+
         [Fact]
-        public void FilterMainActorContains_Test()
+        public void FilterMainActor_Test()
         {
             List<Movie> Movies = new List<Movie>();
             Movie m1 = new Movie("Face/Off", "Nicolas Cage", "Action", "John Woo");
@@ -70,22 +46,12 @@ namespace Mockbuster_Test
             Movies.Add(m3);
             List<Movie> actual = User.FilterMainActors(Movies, "Nicolas Cage");
             Assert.Contains(m1, actual);
-        }
-        [Fact]
-        public void FilterMainActorDoesNotContain_Test()
-        {
-            List<Movie> Movies = new List<Movie>();
-            Movie m1 = new Movie("Face/Off", "Nicolas Cage", "Action", "John Woo");
-            Movies.Add(m1);
-            Movie m2 = new Movie("6 Underground", "Ryan Reynolds", "Thriller", "Michael Bay");
-            Movies.Add(m2);
-            Movie m3 = new Movie("Seven Samurai", "Toshiro Mifune", "Drama", "Akira Kurosawana");
-            Movies.Add(m3);
-            List<Movie> actual = User.FilterMainActors(Movies, "Nicolas Cage");
+            Assert.DoesNotContain(m2, actual);
             Assert.DoesNotContain(m3, actual);
         }
+
         [Fact]
-        public void FilterGenreContains_Test()
+        public void FilterGenre_Test()
         {
             List<Movie> Movies = new List<Movie>();
             Movie m1 = new Movie("Face/Off", "Nicolas Cage", "Action", "John Woo");
@@ -96,22 +62,12 @@ namespace Mockbuster_Test
             Movies.Add(m3);
             List<Movie> actual = User.FilterGenre(Movies, "Drama");
             Assert.Contains(m3, actual);
-        }
-        [Fact]
-        public void FilterGenreDoesNotContain_Test()
-        {
-            List<Movie> Movies = new List<Movie>();
-            Movie m1 = new Movie("Face/Off", "Nicolas Cage", "Action", "John Woo");
-            Movies.Add(m1);
-            Movie m2 = new Movie("6 Underground", "Ryan Reynolds", "Thriller", "Michael Bay");
-            Movies.Add(m2);
-            Movie m3 = new Movie("Seven Samurai", "Toshiro Mifune", "Drama", "Akira Kurosawana");
-            Movies.Add(m3);
-            List<Movie> actual = User.FilterGenre(Movies, "Drama");
+            Assert.DoesNotContain(m1, actual);
             Assert.DoesNotContain(m2, actual);
         }
+
         [Fact]
-        public void FilterDirectorContains_Test()
+        public void FilterDirector_Test()
         {
             List<Movie> Movies = new List<Movie>();
             Movie m1 = new Movie("Face/Off", "Nicolas Cage", "Action", "John Woo");
@@ -122,18 +78,7 @@ namespace Mockbuster_Test
             Movies.Add(m3);
             List<Movie> actual = User.FilterDirector(Movies, "Michael Bay");
             Assert.Contains(m2, actual);
-        }
-        [Fact]
-        public void FilterDirectorDoesNotContain_Test()
-        {
-            List<Movie> Movies = new List<Movie>();
-            Movie m1 = new Movie("Face/Off", "Nicolas Cage", "Action", "John Woo");
-            Movies.Add(m1);
-            Movie m2 = new Movie("6 Underground", "Ryan Reynolds", "Thriller", "Michael Bay");
-            Movies.Add(m2);
-            Movie m3 = new Movie("Seven Samurai", "Toshiro Mifune", "Drama", "Akira Kurosawana");
-            Movies.Add(m3);
-            List<Movie> actual = User.FilterDirector(Movies, "Michael Bay");
+            Assert.DoesNotContain(m1, actual);
             Assert.DoesNotContain(m3, actual);
         }
     }
@@ -147,35 +92,94 @@ namespace Mockbuster_Test
             Admin.AddMovie(movieList, m1);
             Assert.Contains(m1, movieList);
         }
+
         [Fact]
         public void RemoveMovie_Test()
         {
-            List<Movie> Movies = new List<Movie>();
+            List<Movie> movieList = new List<Movie>();
             Movie m1 = new Movie("Face/Off", "Nicolas Cage", "Action", "John Woo");
-            Movies.Add(m1);
+            movieList.Add(m1);
             Movie m2 = new Movie("6 Underground", "Ryan Reynolds", "Thriller", "Michael Bay");
-            Movies.Add(m2);
+            movieList.Add(m2);
             Movie m3 = new Movie("Seven Samurai", "Toshiro Mifune", "Drama", "Akira Kurosawana");
-            Movies.Add(m3);
-            Admin.RemoveMovie(Movies, 1);
-            Assert.DoesNotContain(m2, Movies);
+            movieList.Add(m3);
+            Admin.RemoveMovie(movieList, 1); // Removing movie at index 1
+            Assert.DoesNotContain(m2, movieList);
+            Assert.Contains(m1, movieList);
+            Assert.Contains(m3, movieList);
         }
-        // todo Figure Out Unit Testing Updating, This will break
+
         [Fact]
         public void EditMovie_Test()
         {
             List<Movie> movieList = new List<Movie>();
             Movie m1 = new Movie("Face/Off", "Nicolas Cage", "Action", "John Woo");
             movieList.Add(m1);
-            string newName = "6 Underground";
-            string newMainActor = "Ryan Reynolds";
-            string newGenre = "Thriller";
-            string newDirector = "Michael Bay";
+            string newName = "Avatar";
+            string newMainActor = "Sam Worthington";
+            string newGenre = "Science Fiction";
+            string newDirector = "James Cameron";
             Admin.EditMovie(m1, newName, newMainActor, newGenre, newDirector);
-            Assert.Equal("6 Underground", movieList[0].GetMovieName());
-            Assert.Equal("Ryan Reynolds", movieList[0].GetMainActor());
-            Assert.Equal("Thriller", movieList[0].GetGenre());
-            Assert.Equal("Michael Bay", movieList[0].GetDirector());
+            Assert.Equal("Avatar", m1.GetMovieName());
+            Assert.Equal("Sam Worthington", m1.GetMainActor());
+            Assert.Equal("Science Fiction", m1.GetGenre());
+            Assert.Equal("James Cameron", m1.GetDirector());
+        }
+
+        [Fact]
+        public void EditName_Test()
+        {
+            List<Movie> movieList = new List<Movie>();
+            Movie m1 = new Movie("Face/Off", "Nicolas Cage", "Action", "John Woo");
+            movieList.Add(m1);
+            string newName = "Avatar";
+            Admin.EditMovieName(m1, newName);
+            Assert.Equal("Avatar", m1.GetMovieName()); // Here is the change
+            Assert.Equal("Nicolas Cage", m1.GetMainActor());
+            Assert.Equal("Action", m1.GetGenre());
+            Assert.Equal("John Woo", m1.GetDirector());
+        }
+
+        [Fact]
+        public void EditMainActor_Test()
+        {
+            List<Movie> movieList = new List<Movie>();
+            Movie m1 = new Movie("Face/Off", "Nicolas Cage", "Action", "John Woo");
+            movieList.Add(m1);
+            string newMainActor = "Sam Worthington";
+            Admin.EditMovieMainActor(m1, newMainActor);
+            Assert.Equal("Face/Off", m1.GetMovieName()); 
+            Assert.Equal("Sam Worthington", m1.GetMainActor()); // Here is the change
+            Assert.Equal("Action", m1.GetGenre());
+            Assert.Equal("John Woo", m1.GetDirector());
+        }
+
+        [Fact]
+        public void EditGenre_Test()
+        {
+            List<Movie> movieList = new List<Movie>();
+            Movie m1 = new Movie("Face/Off", "Nicolas Cage", "Action", "John Woo");
+            movieList.Add(m1);
+            string newGenre = "Science Fiction";
+            Admin.EditMovieGenre(m1, newGenre);
+            Assert.Equal("Face/Off", m1.GetMovieName());
+            Assert.Equal("Nicolas Cage", m1.GetMainActor());
+            Assert.Equal("Science Fiction", m1.GetGenre()); // Here is the change
+            Assert.Equal("John Woo", m1.GetDirector());
+        }
+
+        [Fact]
+        public void EditDirector_Test()
+        {
+            List<Movie> movieList = new List<Movie>();
+            Movie m1 = new Movie("Face/Off", "Nicolas Cage", "Action", "John Woo");
+            movieList.Add(m1);
+            string newDirector = "James Cameron";
+            Admin.EditMovieDirector(m1, newDirector);
+            Assert.Equal("Face/Off", m1.GetMovieName());
+            Assert.Equal("Nicolas Cage", m1.GetMainActor());
+            Assert.Equal("Action", m1.GetGenre());
+            Assert.Equal("James Cameron", m1.GetDirector()); // Here is the change
         }
     }
 }

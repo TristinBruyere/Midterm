@@ -60,7 +60,7 @@ namespace Mockbuster
             List<Movie> filteredList = new List<Movie>();
             switch (userInput)
             {
-                case "1":
+                case "2":
                     Console.Write("Enter the name of the movie you are looking for: ");
                     string searchName = Console.ReadLine();
                     filteredList = User.FilterMovieName(movieList, searchName);
@@ -75,7 +75,7 @@ namespace Mockbuster
                         Thread.Sleep(300);
                         return filteredList;
                     }
-                case "2":
+                case "3":
                     Console.Write("Enter the main actor whos movies you are looking for: ");
                     string searchMainActor = Console.ReadLine();
                     filteredList = User.FilterMainActors(movieList, searchMainActor);
@@ -90,7 +90,7 @@ namespace Mockbuster
                         Thread.Sleep(300);
                         return filteredList;
                     }
-                case "3":
+                case "4":
                     Console.Write("Enter the genre you are looking for: ");
                     string searchGenre = Console.ReadLine();
                     filteredList = User.FilterGenre(movieList, searchGenre);
@@ -105,7 +105,7 @@ namespace Mockbuster
                         Thread.Sleep(300);
                         return filteredList;
                     }
-                case "4":
+                case "5":
                     Console.Write("Enter the director whos movies you are looking for: ");
                     string searchDirector = Console.ReadLine();
                     filteredList = User.FilterDirector(movieList, searchDirector);
